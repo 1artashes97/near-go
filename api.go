@@ -6,11 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/textileio/near-api-go/account"
-	itypes "github.com/textileio/near-api-go/internal/types"
-	"github.com/textileio/near-api-go/types"
-	"github.com/textileio/near-api-go/util"
+	"github.com/1artashes97/near-go/account"
+	itypes "github.com/1artashes97/near-go/internal/types"
+	"github.com/1artashes97/near-go/types"
+	"github.com/1artashes97/near-go/util"
 )
 
 // CallFunctionResponse holds information about the result of a function call.
@@ -156,7 +155,7 @@ func (c *Client) CallFunction(
 		)
 	}
 	var res CallFunctionResponse
-	if err := c.config.RPCClient.CallContext(ctx, &res, "query", rpc.NewNamedParams(req)); err != nil {
+	if err := c.config.RPCClient.CallContext(ctx, &res, "query", itypes.NewNamedParams(req)); err != nil {
 		return nil, fmt.Errorf("calling query rpc: %v", util.MapRPCError(err))
 	}
 	return &res, nil
@@ -217,7 +216,7 @@ func (c *Client) DataChanges(
 		)
 	}
 	var res DataChangesResponse
-	if err := c.config.RPCClient.CallContext(ctx, &res, "EXPERIMENTAL_changes", rpc.NewNamedParams(req)); err != nil {
+	if err := c.config.RPCClient.CallContext(ctx, &res, "EXPERIMENTAL_changes", itypes.NewNamedParams(req)); err != nil {
 		return nil, fmt.Errorf("calling changes rpc: %v", util.MapRPCError(err))
 	}
 	return &res, nil
@@ -268,7 +267,7 @@ func (c *Client) ViewCode(ctx context.Context, accountID string, opts ...ViewCod
 		)
 	}
 	var viewCodeRes ViewCodeResponse
-	if err := c.config.RPCClient.CallContext(ctx, &viewCodeRes, "query", rpc.NewNamedParams(req)); err != nil {
+	if err := c.config.RPCClient.CallContext(ctx, &viewCodeRes, "query", itypes.NewNamedParams(req)); err != nil {
 		return nil, fmt.Errorf("calling query rpc: %v", util.MapRPCError(err))
 	}
 	return &viewCodeRes, nil

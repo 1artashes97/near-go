@@ -96,3 +96,12 @@ type BlockResult struct {
 	Header BlockHeader `json:"header"`
 	Chunks []Chunk     `json:"chunks"`
 }
+
+func NewNamedParams(argsObject interface{}) NamedParams {
+	return NamedParams{Value: argsObject}
+}
+
+// NamedParams wraps a struct or map value to provide RPC params as an object.
+type NamedParams struct {
+	Value interface{}
+}

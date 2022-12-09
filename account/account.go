@@ -8,15 +8,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/rpc"
+	itypes "github.com/1artashes97/near-go/internal/types"
+	"github.com/1artashes97/near-go/keys"
+	"github.com/1artashes97/near-go/transaction"
+	"github.com/1artashes97/near-go/types"
+	"github.com/1artashes97/near-go/util"
 	"github.com/mr-tron/base58"
 	"github.com/near/borsh-go"
 	logging "github.com/textileio/go-log/v2"
-	itypes "github.com/textileio/near-api-go/internal/types"
-	"github.com/textileio/near-api-go/keys"
-	"github.com/textileio/near-api-go/transaction"
-	"github.com/textileio/near-api-go/types"
-	"github.com/textileio/near-api-go/util"
 )
 
 const (
@@ -62,7 +61,7 @@ func (a *Account) ViewState(ctx context.Context, opts ...ViewStateOption) (*Acco
 		)
 	}
 	var res AccountStateView
-	if err := a.config.RPCClient.CallContext(ctx, &res, "query", rpc.NewNamedParams(req)); err != nil {
+	if err := a.config.RPCClient.CallContext(ctx, &res, "query", itypes.NewNamedParams(req)); err != nil {
 		return nil, fmt.Errorf("calling rpc: %v", util.MapRPCError(err))
 	}
 	return &res, nil
@@ -92,7 +91,7 @@ func (a *Account) State(
 		)
 	}
 	var res AccountView
-	if err := a.config.RPCClient.CallContext(ctx, &res, "query", rpc.NewNamedParams(req)); err != nil {
+	if err := a.config.RPCClient.CallContext(ctx, &res, "query", itypes.NewNamedParams(req)); err != nil {
 		return nil, fmt.Errorf("calling rpc: %v", util.MapRPCError(err))
 	}
 	return &res, nil
@@ -122,7 +121,7 @@ func (a *Account) ViewAccessKey(ctx context.Context, pubKey *keys.PublicKey) (*A
 	resp := &viewAccessKeyResp{Permission: &raw}
 
 	// var res AccessKeyView
-	if err := a.config.RPCClient.CallContext(ctx, &resp, "query", rpc.NewNamedParams(req)); err != nil {
+	if err := a.config.RPCClient.CallContext(ctx, &resp, "query", itypes.NewNamedParams(req)); err != nil {
 		return nil, fmt.Errorf("calling rpc: %v", util.MapRPCError(err))
 	}
 	if resp.Error != "" {

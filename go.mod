@@ -1,9 +1,13 @@
-module 1artashes97/near-go
+module github.com/1artashes97/near-go
 
 go 1.19
 
 require (
 	github.com/ethereum/go-ethereum v1.10.26
+	github.com/mr-tron/base58 v1.2.0
+	github.com/near/borsh-go v0.3.0
+	github.com/textileio/go-ethereum v1.9.7
+	github.com/textileio/go-log/v2 v2.1.3-gke-1
 	github.com/textileio/near-api-go v0.2.0
 )
 
@@ -13,10 +17,8 @@ require (
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
-	github.com/mr-tron/base58 v1.2.0 // indirect
-	github.com/near/borsh-go v0.3.0 // indirect
+	github.com/rs/cors v1.7.0 // indirect
 	github.com/shirou/gopsutil v3.21.4-0.20210419000835-c7a38de76ee5+incompatible // indirect
-	github.com/textileio/go-log/v2 v2.1.3-gke-1 // indirect
 	github.com/tklauser/go-sysconf v0.3.5 // indirect
 	github.com/tklauser/numcpus v0.2.2 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
